@@ -13,5 +13,19 @@ public class App {
         System.out.println("Texto original: "+texto);
         System.out.println("Texto codificado: "+codificado);
         System.out.println("Texto decodificado: "+decodificado);
+
+        Codificador codMorse = new CodificadorMorse();
+
+        System.out.println("Codificador: "+codMorse.getNome());
+        System.out.println("Versao: "+codMorse.getDataCriacao());
+        System.out.println("Nivel de segurança: "+codMorse.getNivelSeguranca());
+        
+        String textoCodMorse = "Este e o string a ser codificado";
+        String codificadoCodMorse = codMorse.codifica(textoCodMorse);
+        String decodificadoCodMorse = codMorse.decodifica(codificadoCodMorse);
+
+        System.out.println("Texto original: "+textoCodMorse);
+        System.out.println("Texto codificado: "+codificadoCodMorse);
+        System.out.println("Texto decodificado: "+decodificadoCodMorse);
     }
 }
