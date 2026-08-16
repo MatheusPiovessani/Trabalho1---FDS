@@ -64,7 +64,8 @@ public class CodificadorMorse implements Codificador{
 
     public String decodifica(String msgmMorse){
         StringBuilder decodificado = new StringBuilder();
-        String upperTexto = msgmMorse.toUpperCase();
+        StringBuilder temporario = new StringBuilder();
+        
 
         HashMap<String, Character> mapaCodigoMorseRev = new HashMap<>();
 
@@ -98,9 +99,18 @@ public class CodificadorMorse implements Codificador{
             mapaCodigoMorseRev.put("/", ' ');
         }
 
-        for (char c : upperTexto.toCharArray()) {
-            decodificado.append((mapaCodigoMorseRev.get(c)));
+        for (char c : msgmMorse.toCharArray()) {
+            if (c != ' ') {
+                temporario.append(c);
+            } else {
+                decodificado.append(mapaCodigoMorseRev.get(temporario.toString()));
+                temporario.setLength(0);
+            }
         }
+        if (temporario.length() > 0) {
+            decodificado.append(mapaCodigoMorseRev.get(temporario.toString()));
+        }
+
         return decodificado.toString();
 
     }
